@@ -1,0 +1,14 @@
+{
+  "name": "golf-tracker",
+  "version": "1.0.0",
+  "description": "Golf tracker app",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.3",
+    "node-fetch": "^3.2.10"
+  }
+}
