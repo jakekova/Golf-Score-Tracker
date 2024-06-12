@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golf Score Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 20px;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        async function calculateTotalScore(event) {
+            event.preventDefault();
+
+            const golfers = [];
+            for (let i = 0; i < 9; i++) {
+                const golferName = document.getElementById(`golfer${i + 1}`).value.trim();
+                if (golferName) golfers.push(golferName);
+            }
+
+            const response = await fetch('/calculate_scores', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ golfers: golfers })
+            });
+            const data = await response.json();
+            document.getElementById('result').innerText = `The combined score of all golfers is ${data.combined_score}.`;
+        }
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Golf Score Calculator</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2 class="my-4">Enter the names of 9 golfers</h2>
+        <p>Calculate the total score with bonuses and penalties</p>
+        <form onsubmit="calculateTotalScore(event)">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <input type="text" id="golfer1" name="golfer1" class="form-control" placeholder="Golfer 1" required>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" id="golfer2" name="golfer2" class="form-control" placeholder="Golfer 2" required>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" id="golfer3" name="golfer3" class="form-control" placeholder="Golfer 3" required>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" id="golfer4" name="golfer4" class="form-control" placeholder="Golfer 4" required>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" id="golfer5" name="golfer5" class="form-control" placeholder="Golfer 5" required>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" id="golfer6" name="golfer6" class="form-control" placeholder="Golfer 6" required>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" id="golfer7" name="golfer7" class="form-control" placeholder="Golfer 7" required>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" id="golfer8" name="golfer8" class="form-control" placeholder="Golfer 8" required>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" id="golfer9" name="golfer9" class="form-control" placeholder="Golfer 9" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Calculate Score</button>
+        </form>
+        <div id="result" class="result alert alert-info mt-4"></div>
+    </div>
+
+    <footer class="bg-light text-center text-lg-start mt-5">
+        <div class="container p-4">
+            <small>
+                <a href="#">Link 1</a> • <a href="#">Link 2</a>
+            </small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
