@@ -1,6 +1,6 @@
 # Golf-Score-Tracker
 
-This site was made specifically for Bob Pierangeli's PGA Major Pools to calculate your score in real time leverage slashgolf's API, https://slashgolf.dev/quickstart.html. 
+This site was made specifically for Bob Pierangeli's PGA Major Pools to calculate your score in real time leverage slashgolf's API, https://slashgolf.dev/quickstart.html. The site currently lives at [https://www.pythonanywhere.com/user/kovakova/webapps/#tab_id_kovakova_pythonanywhere_com:~:text=Configuration%20for-,kovakova](http://kovakova.pythonanywhere.com/)
 
 You must pick 9 golfers total in the attached excel sheet: 1 from each group (6) and 3 additional who are not listed in the sheet.  
 
